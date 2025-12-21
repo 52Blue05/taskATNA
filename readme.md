@@ -4,7 +4,7 @@
 
 - Docker
 - Docker Compose
-- make(download through Chocolatery)
+- make(download via Chocolatery)
 
 ### Start backend
 
