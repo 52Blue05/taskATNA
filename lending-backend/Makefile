@@ -4,7 +4,6 @@ COMPOSE_FILE=docker-compose.local.yml
 PROJECT_NAME=lending-local
 
 docker-local:
-	@echo "🚀 Starting backend + database..."
 	docker compose -f $(COMPOSE_FILE) -p $(PROJECT_NAME) up --build
 
 docker-down:
