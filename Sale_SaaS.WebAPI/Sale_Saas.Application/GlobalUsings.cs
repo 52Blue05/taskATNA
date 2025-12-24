@@ -1,0 +1,13 @@
+﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Options;
+global using Microsoft.EntityFrameworkCore;
+global using FluentValidation;
+global using Ardalis.GuardClauses;
+global using AutoMapper;
+global using AutoMapper.QueryableExtensions;
+global using MediatR;
+global using Sale_Saas.Domain.Entities;
+global using Sale_Saas.Application.Common.Interfaces;
+global using Sale_Saas.Application.Interfaces;
+global using Sale_Saas.Application.Common.Models;
+global using Sale_Saas.Application.Utilities;
