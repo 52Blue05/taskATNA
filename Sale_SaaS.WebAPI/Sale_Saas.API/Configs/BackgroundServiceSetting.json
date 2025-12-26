@@ -1,8 +1,0 @@
-﻿{
-  "BackgroundServiceSetting": {
-    "DownTimeScheduleEnabled": false,
-    "TrackingLogScheduleEnabled": false,
-    "DataExpiredScheduleEnabled": false,
-    "SyllabusNotiBackgroundService": true 
-  }
-}
