@@ -62,8 +62,6 @@ $(BACKUP_DIR):
 	if not exist "$(BACKUP_DIR)" mkdir "$(BACKUP_DIR)"
 
 # --- DUMP REMOTE ---
-# Sử dụng 'docker exec' để chạy pg_dump từ bên trong container ra ngoài
-# Lưu ý: Container 'sale-saas-postgres' phải đang chạy
 db-dump-remote: $(BACKUP_DIR)
 	@echo [INFO] Dumping REMOTE MAIN DB (%REMOTE_DB_MAIN%)...
 	docker exec -e PGPASSWORD=$(REMOTE_DB_PASSWORD) sale-saas-postgres pg_dump -h $(REMOTE_DB_HOST) -p $(REMOTE_DB_PORT) -U $(REMOTE_DB_USER) -d $(REMOTE_DB_MAIN) -F c > "$(BACKUP_DIR)/$(REMOTE_DB_MAIN)_$(TIMESTAMP).dump"
@@ -72,7 +70,6 @@ db-dump-remote: $(BACKUP_DIR)
 	docker exec -e PGPASSWORD=$(REMOTE_DB_PASSWORD) sale-saas-postgres pg_dump -h $(REMOTE_DB_HOST) -p $(REMOTE_DB_PORT) -U $(REMOTE_DB_USER) -d $(REMOTE_DB_CORE) -F c > "$(BACKUP_DIR)/$(REMOTE_DB_CORE)_$(TIMESTAMP).dump"
 
 # --- RESTORE LOCAL ---
-# Tìm file mới nhất bằng PowerShell -> Pipe nội dung vào Docker để restore
 db-restore-local:
 	@echo [INFO] Restoring MAIN DB from latest backup...
 	@for /f "delims=" %%i in ('powershell -Command "Get-ChildItem $(BACKUP_DIR)\$(REMOTE_DB_MAIN)_*.dump | Sort-Object LastWriteTime -Descending | Select-Object -ExpandProperty Name -First 1"') do \
